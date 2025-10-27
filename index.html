@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javelin Data Platforms | Precision-Built. Mission-Focused.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(197, 165, 114, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text .gold {
+            color: #C5A572;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-menu a:hover {
+            color: #C5A572;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 180px 2rem 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(197, 165, 114, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.95rem;
+            color: #C5A572;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+            margin-bottom: 3rem;
+            max-width: 900px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #C5A572;
+            color: #0a0a0a;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: #d4b583;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(197, 165, 114, 0.3);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #C5A572;
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(197, 165, 114, 0.1);
+            border-color: #d4b583;
+        }
+
+        .section {
+            padding: 100px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-dark {
+            background: #0a0a0a;
+            color: #ffffff;
+            max-width: 100%;
+            padding: 100px 2rem;
+        }
+
+        .section-dark-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 0.9rem;
+            color: #C5A572;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #0a0a0a;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title-dark {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #C5A572;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-dark .section-title {
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .section-dark .section-subtitle {
+            color: #a0a0a0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 2px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: #C5A572;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+
+        .service-number {
+            font-size: 0.85rem;
+            color: #C5A572;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .capability-item {
+            border-left: 3px solid #C5A572;
+            padding-left: 2rem;
+        }
+
+        .capability-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .capability-item p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .why-section {
+            background: #f8f8f8;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .why-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: #C5A572;
+            transform: translateY(-3px);
+        }
+
+        .why-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+            font-weight: 700;
+        }
+
+        .why-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .sectors-banner {
+            background: linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .sectors-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sectors-list {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .sector-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sector-icon {
+            font-size: 2.5rem;
+            color: #C5A572;
+        }
+
+        .sector-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 120px 2rem;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #0a0a0a;
+            font-weight: 700;
+        }
+
+        .contact-section p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            color: #a0a0a0;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-size: 1.2rem;
+            color: #C5A572;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #C5A572;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2a2a2a;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .services-grid,
+            .capabilities-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section,
+            .section-dark {
+                padding: 70px 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .sectors-list {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 140px 1.5rem 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <div class="logo-text">JAVELIN <span class="gold">DATA PLATFORMS</span></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why">Why Javelin</a></li>
+                <li><a href="#sectors">Sectors</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">SECURE. SCALABLE. MISSION-DRIVEN.</div>
+            <h1>Precision-Built.<br>Mission-Focused.</h1>
+            <p class="hero-description">Javelin Data Platforms delivers secure, scalable data solutions to U.S. Government, Defense, Healthcare, and regulated commercial sectors. We architect high-performance cloud platforms, data infrastructure, and cybersecurity solutions that turn complexity into clarity — at speed, and at scale.</p>
+            <div class="cta-group">
+                <a href="#contact" class="cta-button">Partner With Us</a>
+                <a href="#services" class="cta-button cta-button-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="section-eyebrow">CORE OFFERINGS</div>
+        <h2 class="section-title">Enterprise Solutions for Mission-Critical Environments</h2>
+        <p class="section-subtitle">We specialize in architecting and implementing high-performance cloud platforms, data infrastructure, and cybersecurity solutions tailored to the unique needs of federal and enterprise clients.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <h3>Cloud Architecture</h3>
+                <p>Azure Government and AWS GovCloud expertise. We design FedRAMP-compliant, zero-trust architectures that enable secure digital transformation for federal and regulated environments.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <h3>Secure Data Platform Engineering</h3>
+                <p>Build resilient, scalable data infrastructure optimized for performance and security. From data lakes to real-time pipelines, we deliver platforms that power decision intelligence.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <h3>AI/ML Readiness & Integration</h3>
+                <p>Enable advanced analytics and AI capabilities with secure, governed data platforms. We prepare your infrastructure for machine learning workloads and responsible AI deployment.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">04</div>
+                <h3>DevSecOps Pipelines & Automation</h3>
+                <p>Streamline delivery with security-integrated CI/CD pipelines. We build automation frameworks that accelerate deployment while maintaining compliance and control.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">05</div>
+                <h3>Compliance & Governance</h3>
+                <p>Navigate FISMA, NIST, CMMC, and HIPAA requirements with confidence. Our governance frameworks ensure continuous compliance without sacrificing agility.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">06</div>
+                <h3>Secure Collaboration & Digital Workplace</h3>
+                <p>Modern collaboration platforms designed for security-first organizations. Enable productivity without compromising on data protection or regulatory requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark">
+        <div class="section-dark-content">
+            <div class="section-eyebrow">TECHNICAL EXCELLENCE</div>
+            <h2 class="section-title">Deep Expertise Across the Stack</h2>
+            <p class="section-subtitle">Our consultants bring deep experience in Microsoft Azure, zero trust architectures, data governance, DevSecOps, and AI/ML-enablement.</p>
+            
+            <div class="capabilities-grid">
+                <div class="capability-item">
+                    <h3>Microsoft Azure Mastery</h3>
+                    <p>Azure Government cloud architecture, Azure Synapse Analytics, Azure Data Factory, and enterprise-scale landing zones designed for mission-critical workloads.</p>
+                </div>
+
+                <div class="capability-item">
+                    <h3>Zero Trust Architecture</h3>
+                    <p>Identity-centric security models, micro-segmentation, continuous verification, and least-privilege access controls for defense-in-depth protection.</p>
+                </div>
+
+                <div class="capability-item">
+                    <h3>Data Governance Frameworks</h3>
+                    <p>Data quality management, metadata cataloging, lineage tracking, and privacy-by-design implementations that maintain compliance and enable analytics.</p>
+                </div>
+
+                <div class="capability-item">
+                    <h3>Advanced Analytics & AI</h3>
+                    <p>Machine learning operations, responsible AI frameworks, predictive analytics, and decision intelligence platforms that drive mission outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="section why-section">
+        <div class="section-eyebrow">WHY JAVELIN</div>
+        <h2 class="section-title">Operational Rigor Meets Security-First Design</h2>
+        <p class="section-subtitle">We understand your objectives aren't just technical — they're mission-critical. Every solution we deliver is rooted in operational excellence and built for the long term.</p>
+        
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>Mission-Aligned Mindset</h3>
+                <p>We don't just build technology — we enable mission success. Our team understands the unique pressures and requirements of government and regulated sectors, ensuring every solution advances your strategic objectives.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Security-Cleared Personnel</h3>
+                <p>Our consultants hold the clearances and certifications needed to support sensitive government work. We operate within your security perimeter with full accountability and compliance.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Regulated Environment Expertise</h3>
+                <p>Deep experience navigating federal, defense, and healthcare compliance landscapes. From FedRAMP to CMMC to HIPAA, we build solutions that meet the highest standards of security and governance.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Agile Delivery at Enterprise Scale</h3>
+                <p>Enterprise-grade results delivered with speed, precision, and accountability. Our delivery methodology balances agility with the rigor required for mission-critical systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sectors" class="sectors-banner">
+        <div class="sectors-content">
+            <div class="section-eyebrow">TRUSTED BY MISSION-DRIVEN ORGANIZATIONS</div>
+            <h2 class="section-title-dark">Sectors We Serve</h2>
+            <p class="section-subtitle">Where security, compliance, and mission success matter most</p>
+            
+            <div class="sectors-list">
+                <div class="sector-item">
+                    <div class="sector-icon">🏛️</div>
+                    <div class="sector-name">U.S. Government</div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🛡️</div>
+                    <div class="sector-name">Defense & Intelligence</div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🏥</div>
+                    <div class="sector-name">Healthcare</div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🏢</div>
+                    <div class="sector-name">Regulated Commercial</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Ready to Modernize Your Mission?</h2>
+        <p>Let's discuss how Javelin can architect your next secure data platform</p>
+        <a href="mailto:jbaker@javelindataplatforms.com" class="cta-button">Get In Touch</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-tagline">Precision-Built. Mission-Focused.</div>
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#why">Why Javelin</a>
+                <a href="#sectors">Sectors</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Javelin Data Platforms. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
